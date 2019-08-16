@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="Agreement Number"
+        android:textColor="#212121"
         android:paddingLeft="16dp"
         android:fontFamily="sans-serif-condensed"
         android:background="@drawable/edit_bck"
@@ -38,6 +39,7 @@
         android:id="@+id/main_custName"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:textColor="#212121"
         android:hint="Customer Name"
         android:paddingLeft="16dp"
         android:fontFamily="sans-serif-condensed"
@@ -52,6 +54,7 @@
         android:id="@+id/main_address"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:textColor="#212121"
         android:hint="Address"
         android:paddingLeft="16dp"
         android:fontFamily="sans-serif-condensed"
@@ -61,7 +64,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="15dp"
         android:layout_below="@id/main_custName"/>
-    
+
     <TextView
         android:id="@+id/main_selectImgTxt"
         android:layout_width="wrap_content"
@@ -77,6 +80,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textSize="16dp"
+        android:elevation="6dp"
         android:background="#FFFFFF"/>
 
     <Button
@@ -93,5 +97,23 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="128dp"
         android:layout_below="@id/main_selectImgTxt"/>
+
+    <View
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#212121"
+        android:visibility="gone"
+        android:alpha="0.3"/>
+
+    <ProgressBar
+        android:id="@+id/main_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="35dp"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
