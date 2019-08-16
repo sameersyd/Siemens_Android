@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFD5"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/main_mainTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIEMENS"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:textColor="#009D97"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/main_agreeNum"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Agreement Number"
+        android:paddingLeft="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@drawable/edit_bck"
+        android:elevation="6dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@id/main_mainTxt"/>
+
+    <EditText
+        android:id="@+id/main_custName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Customer Name"
+        android:paddingLeft="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@drawable/edit_bck"
+        android:elevation="6dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/main_agreeNum"/>
+
+    <EditText
+        android:id="@+id/main_address"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Address"
+        android:paddingLeft="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@drawable/edit_bck"
+        android:elevation="6dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/main_custName"/>
+    
+    <TextView
+        android:id="@+id/main_selectImgTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#007AFF"
+        android:layout_below="@id/main_address"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:text="Select Image"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="16dp"
+        android:background="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/main_generatePdfBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#555555"
+        android:text="Generate PDF"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="128dp"
+        android:layout_below="@id/main_selectImgTxt"/>
+
+</RelativeLayout>
