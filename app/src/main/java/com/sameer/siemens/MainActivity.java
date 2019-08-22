@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -19,13 +20,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.DrawInterface;
 import com.kbeanie.multipicker.api.ImagePicker;
 import com.kbeanie.multipicker.api.Picker;
 import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
@@ -140,20 +148,133 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
 
     private void addTitlePage(Document document) throws DocumentException, IOException {
 
+
+        Font titleFont = new Font(Font.FontFamily.HELVETICA,24,Font.BOLD,BaseColor.DARK_GRAY);
+        Font subHeadFont = new Font(Font.FontFamily.HELVETICA,18,Font.BOLD,BaseColor.BLACK);
+        Chunk c = new Chunk("General Information", subHeadFont);
+        Chunk chunk2 = new Chunk("Asset Condition", subHeadFont);
+        Chunk chunk3 = new Chunk("Information About Onsite Visit", subHeadFont);
+
+        c.setBackground(BaseColor.LIGHT_GRAY);
+        chunk2.setBackground(BaseColor.LIGHT_GRAY);
+        chunk3.setBackground(BaseColor.LIGHT_GRAY);
+
+
         Paragraph prHead = new Paragraph();
         prHead.setSpacingAfter(30f);
-        prHead.setAlignment(Element.ALIGN_CENTER);
+        prHead.setFont(titleFont);
+        prHead.setAlignment(Element.ALIGN_LEFT);
         prHead.add("SIEMENS"+ "\n");
 
-        // New Para in PDF
-        Paragraph pPersonalInfo = new Paragraph();
-        pPersonalInfo.add("Agreement Number - " + agreeNumEdit.getText().toString() + "\n");
-        pPersonalInfo.add("Customer Name - " + custNameEdit.getText().toString() + "\n");
-        pPersonalInfo.add("Address - " + addressEdit.getText().toString() + "\n");
-        pPersonalInfo.setAlignment(Element.ALIGN_LEFT);
+
+        // General Information Table
+
+        Paragraph genInfo = new Paragraph(c);
+        genInfo.setFont(subHeadFont);
+        genInfo.setAlignment(Element.ALIGN_CENTER);
+        genInfo.setSpacingAfter(30f);
+
+
+        PdfPTable table = new PdfPTable(2);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("Agreement Number"));
+        c1.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("A88677"));
+        c1.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table.addCell(c1);
+
+        c1.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table.addCell("Label Number: ");
+        table.addCell("Not verified");
+        table.addCell("Customer Name: ");
+        table.addCell( custNameEdit.getText().toString());
+        table.addCell("Address of Asset Location: ");
+        table.addCell(addressEdit.getText().toString());
+        table.addCell("Name Plate");
+        table.addCell("Available");
+        table.addCell("Serial Number (On Asset)");
+        table.addCell("Available");
+        table.addCell("Serial number(in Invoice): (If Available)");
+        table.addCell(" - ");
+        table.addCell("Type of Foundation for Asset (Wherever applicable)");
+        table.addCell("Concrete Floor");
+        table.addCell("Description of the premises :");
+        table.addCell("Manufacturing Facility");
+        table.addCell("Asset influencing circumstances (i.e Chemical Zone, Corrosive atomosphere, Highly Polluted Location etc..) : ");
+        table.addCell("Yes");
+
+
+
+        //Asset Condition Table
+
+        Paragraph asset = new Paragraph(chunk2);
+        asset.setFont(subHeadFont);
+        asset.setAlignment(Element.ALIGN_CENTER);
+        asset.setSpacingAfter(30f);
+        asset.setSpacingBefore(30f);
+
+
+        PdfPTable table2 = new PdfPTable(2);
+
+        PdfPCell c2 = new PdfPCell(new Phrase("Other impression of physical condition of Asset : "));
+        c2.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table2.addCell(c2);
+
+        c2 = new PdfPCell(new Phrase("Good"));
+        c2.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table2.addCell(c2);
+
+        c2.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table2.addCell("Label Number: ");
+        table2.addCell("Not verified");
+        table2.addCell("Was the asset in operation at the time of inspection");
+        table2.addCell("Yes");
+        table2.addCell("Age of the Asset at the time of purchase");
+        table2.addCell("New");
+        table2.addCell("Any Breakdown in the machine");
+        table2.addCell("Not Know");
+        table2.addCell("Photos: ");
+        table2.addCell("Yes");
+
+
+        //  Information About ONsite Visit Table
+
+        Paragraph onsite = new Paragraph(chunk3);
+        onsite.setFont(subHeadFont);
+        onsite.setAlignment(Element.ALIGN_CENTER);
+        onsite.setSpacingAfter(30f);
+
+
+        PdfPTable table3 = new PdfPTable(2);
+
+        PdfPCell c3 = new PdfPCell(new Phrase("Date of Onsite Visit : "));
+        c3.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table3.addCell(c3);
+
+        c3 = new PdfPCell(new Phrase("13/06/2018"));
+        c3.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table3.addCell(c3);
+
+        c3.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table3.addCell("Customer Personnel met at site : ");
+        table3.addCell("Mr. Anand - DGM - Finance");
+        table3.addCell("Report created at");
+        table3.addCell("Bangalore");
+        table3.addCell("Inspection visit done by: ");
+        table3.addCell("Vijendra K");
+
+
 
         document.add(prHead);
-        document.add(pPersonalInfo);
+        document.add(genInfo);
+        document.add(table);
+        document.add(asset);
+        document.add(table2);
+        document.add(onsite);
+        document.add(table3);
+
 
         if (imgList != null && !imgList.isEmpty()) {
             for (int i=0;i<imgList.size();i++){
@@ -207,7 +328,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
             ByteArrayOutputStream strm = new ByteArrayOutputStream();
             bimp.compress(Bitmap.CompressFormat.PNG, 100, strm);
             Image image1 = Image.getInstance(strm.toByteArray());
-            image1.scaleToFit(150, 150);
+            image1.scaleToFit(400, 400);
             image1.setSpacingAfter(30f);
 
             document.add(image1);
