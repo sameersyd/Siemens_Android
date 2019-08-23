@@ -5,18 +5,19 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.DrawInterface;
 import com.kbeanie.multipicker.api.ImagePicker;
 import com.kbeanie.multipicker.api.Picker;
 import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
@@ -51,11 +51,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements ImagePickerCallback {
 
     Document document;
-    EditText agreeNumEdit,custNameEdit,addressEdit;
+    EditText agreeNumEdit, custNameEdit, addressEdit, labelNumberEdit, serialNoEdit, dateEdit, customerPersonnelEdit, createdAtEdit, visitorNameEdit;
     Button generatePdfBtn;
     TextView selectTxt;
+    RadioGroup labelName, serialNo, levelOfBondage, opticalImpression, photos;
+    EditText agreementNumber, labelNumber, customerName, address, serialNoInvoice, date, customerPersonnel, createdAt;
+    RadioButton labelRadio, serialNoRadio, levelRadio, opticalRadio, photosRadio;
     private ImagePicker imagePicker;
     List<ChosenImage> imgList = null;
+    String photoString = "Empty";
+    String levelString, labelString, optimalString, serialNoString;
     public static final String DEST = Environment.getExternalStorageDirectory().getPath() + "/siemensPDF/"+"Siemens.pdf";
 
     View alpView;
@@ -65,15 +70,143 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.siemens_entry);
 
-        agreeNumEdit = (EditText)findViewById(R.id.main_agreeNum);
-        custNameEdit = (EditText)findViewById(R.id.main_custName);
-        addressEdit = (EditText)findViewById(R.id.main_address);
-        selectTxt = (TextView) findViewById(R.id.main_selectImgTxt);
-        generatePdfBtn = (Button) findViewById(R.id.main_generatePdfBtn);
-        alpView = (View)findViewById(R.id.main_view);
-        pg = (ProgressBar)findViewById(R.id.main_progress);
+        agreeNumEdit = findViewById(R.id.agreementNumber);
+        custNameEdit = findViewById(R.id.main_custName);
+        addressEdit = findViewById(R.id.main_address);
+        labelNumberEdit = findViewById(R.id.labelNumber);
+        serialNoEdit = findViewById(R.id.serialNoInvoice);
+        dateEdit = findViewById(R.id.date);
+        customerPersonnelEdit = findViewById(R.id.customerPersonnel);
+        createdAtEdit = findViewById(R.id.createdAt);
+        visitorNameEdit = findViewById(R.id.vistorName);
+
+        selectTxt = findViewById(R.id.main_selectImgTxt);
+        generatePdfBtn = findViewById(R.id.main_generatePdfBtn);
+        alpView = findViewById(R.id.main_view);
+        pg = findViewById(R.id.main_progress);
+
+
+        //Initialising Radio Buttons
+
+        labelName = findViewById(R.id.namePlateRadioGrp);
+        serialNo = findViewById(R.id.serialNoRadioGrp);
+        levelOfBondage = findViewById(R.id.levelofBondageRadioGrp);
+        opticalImpression = findViewById(R.id.opticalRadioGrp);
+        photos = findViewById(R.id.photosRadioGrp);
+
+
+        labelName.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int selectedID = labelName.getCheckedRadioButtonId();
+
+
+                if (selectedID == -1) {
+
+                    Toast.makeText(MainActivity.this, "Nothing Selected", Toast.LENGTH_SHORT).show();
+                } else {
+                    labelRadio = findViewById(selectedID);
+
+                    labelString = labelRadio.getText().toString();
+                    Toast.makeText(MainActivity.this, labelRadio.getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+        levelOfBondage.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int selectedID = levelOfBondage.getCheckedRadioButtonId();
+
+
+                if (selectedID == -1) {
+
+                    Toast.makeText(MainActivity.this, "Nothing Selected", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    levelRadio = findViewById(selectedID);
+                    levelString = levelRadio.getText().toString();
+
+                    Toast.makeText(MainActivity.this, levelRadio.getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+        serialNo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int selectedID = serialNo.getCheckedRadioButtonId();
+
+
+                if (selectedID == -1) {
+
+                    Toast.makeText(MainActivity.this, "Nothing Selected", Toast.LENGTH_SHORT).show();
+                } else {
+                    serialNoRadio = findViewById(selectedID);
+
+                    serialNoString = serialNoRadio.getText().toString();
+
+                    Toast.makeText(MainActivity.this, serialNoRadio.getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+        opticalImpression.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int selectedID = opticalImpression.getCheckedRadioButtonId();
+
+
+                if (selectedID == -1) {
+
+                    Toast.makeText(MainActivity.this, "Nothing Selected", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    opticalRadio = findViewById(selectedID);
+                    optimalString = opticalRadio.getText().toString();
+
+                    Toast.makeText(MainActivity.this, opticalRadio.getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+        photos.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int selectedID = photos.getCheckedRadioButtonId();
+
+
+                if (selectedID == -1) {
+
+                    Toast.makeText(MainActivity.this, "Nothing Selected", Toast.LENGTH_SHORT).show();
+                } else {
+                    photosRadio = findViewById(selectedID);
+
+                    photoString = photosRadio.getText().toString();
+
+                    Toast.makeText(MainActivity.this, photosRadio.getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
 
         selectTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +239,30 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
             Toast.makeText(this, "Enter Address", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (labelNumberEdit.getText().toString().isEmpty() || labelNumberEdit.getText().toString() == "") {
+            Toast.makeText(this, "Enter Label Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (serialNoEdit.getText().toString().isEmpty() || serialNoEdit.getText().toString() == "") {
+            Toast.makeText(this, "Enter Serial Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (dateEdit.getText().toString().isEmpty() || dateEdit.getText().toString() == "") {
+            Toast.makeText(this, "Enter Address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (customerPersonnelEdit.getText().toString().isEmpty() || customerPersonnelEdit.getText().toString() == "") {
+            Toast.makeText(this, " Enter Customer Personnel", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (createdAtEdit.getText().toString().isEmpty() || createdAtEdit.getText().toString() == "") {
+            Toast.makeText(this, "Enter Created at", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (visitorNameEdit.getText().toString().isEmpty() || visitorNameEdit.getText().toString() == "") {
+            Toast.makeText(this, "Enter Visitor name", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         try {
 
@@ -129,6 +286,13 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
             agreeNumEdit.setText("");
             custNameEdit.setText("");
             addressEdit.setText("");
+            labelNumberEdit.setText("");
+            serialNoEdit.setText("");
+            dateEdit.setText("");
+            customerPersonnelEdit.setText("");
+            createdAtEdit.setText("");
+            createdAtEdit.setText("");
+            visitorNameEdit.setText("");
             imgList = null;
 
             hideHUD();
@@ -147,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
     }
 
     private void addTitlePage(Document document) throws DocumentException, IOException {
+
 
 
         Font titleFont = new Font(Font.FontFamily.HELVETICA,24,Font.BOLD,BaseColor.DARK_GRAY);
@@ -187,23 +352,25 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
 
         c1.setHorizontalAlignment(Element.ALIGN_LEFT);
         table.addCell("Label Number: ");
-        table.addCell("Not verified");
+        table.addCell(labelString);
         table.addCell("Customer Name: ");
         table.addCell( custNameEdit.getText().toString());
         table.addCell("Address of Asset Location: ");
         table.addCell(addressEdit.getText().toString());
         table.addCell("Name Plate");
-        table.addCell("Available");
+        table.addCell(labelNumberEdit.getText().toString());
         table.addCell("Serial Number (On Asset)");
-        table.addCell("Available");
+        table.addCell(serialNoString);
         table.addCell("Serial number(in Invoice): (If Available)");
-        table.addCell(" - ");
+        table.addCell(serialNoEdit.getText().toString());
         table.addCell("Type of Foundation for Asset (Wherever applicable)");
         table.addCell("Concrete Floor");
         table.addCell("Description of the premises :");
         table.addCell("Manufacturing Facility");
         table.addCell("Asset influencing circumstances (i.e Chemical Zone, Corrosive atomosphere, Highly Polluted Location etc..) : ");
         table.addCell("Yes");
+        table.addCell("Level of Bondage");
+        table.addCell(levelString);
 
 
 
@@ -222,13 +389,13 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
         c2.setHorizontalAlignment(Element.ALIGN_LEFT);
         table2.addCell(c2);
 
-        c2 = new PdfPCell(new Phrase("Good"));
+        c2 = new PdfPCell(new Phrase(optimalString));
         c2.setHorizontalAlignment(Element.ALIGN_LEFT);
         table2.addCell(c2);
 
         c2.setHorizontalAlignment(Element.ALIGN_LEFT);
         table2.addCell("Label Number: ");
-        table2.addCell("Not verified");
+        table2.addCell(labelNumberEdit.getText().toString());
         table2.addCell("Was the asset in operation at the time of inspection");
         table2.addCell("Yes");
         table2.addCell("Age of the Asset at the time of purchase");
@@ -236,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
         table2.addCell("Any Breakdown in the machine");
         table2.addCell("Not Know");
         table2.addCell("Photos: ");
-        table2.addCell("Yes");
+        table2.addCell(photosRadio.getText().toString());
 
 
         //  Information About ONsite Visit Table
@@ -253,17 +420,17 @@ public class MainActivity extends AppCompatActivity implements ImagePickerCallba
         c3.setHorizontalAlignment(Element.ALIGN_LEFT);
         table3.addCell(c3);
 
-        c3 = new PdfPCell(new Phrase("13/06/2018"));
+        c3 = new PdfPCell(new Phrase(dateEdit.getText().toString()));
         c3.setHorizontalAlignment(Element.ALIGN_LEFT);
         table3.addCell(c3);
 
         c3.setHorizontalAlignment(Element.ALIGN_LEFT);
         table3.addCell("Customer Personnel met at site : ");
-        table3.addCell("Mr. Anand - DGM - Finance");
+        table3.addCell(customerPersonnelEdit.getText().toString());
         table3.addCell("Report created at");
-        table3.addCell("Bangalore");
+        table3.addCell(createdAtEdit.getText().toString());
         table3.addCell("Inspection visit done by: ");
-        table3.addCell("Vijendra K");
+        table3.addCell(visitorNameEdit.getText().toString());
 
 
 

@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <EditText
+                android:id="@+id/agreementNumber"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_mainTxt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Agreement Number"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            <EditText
+                android:id="@+id/main_custName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_agreeNum"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Customer Name"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            <EditText
+                android:id="@+id/main_address"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_custName"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Address"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/labelNumber"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/agreementNumber"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Label Number"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/customerName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/labelNumber"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Customer"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/customerName"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Address"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            <EditText
+                android:id="@+id/serialNoInvoice"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/customerName"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Serial Number in Invoice"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_mainTxt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Date of Onsite Visit"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/customerPersonnel"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_mainTxt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Customer Personnel met at site"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/createdAt"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_mainTxt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Report Created at"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            
+            <EditText
+                android:id="@+id/vistorName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_mainTxt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/edit_bck"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="Name of the Visitor"
+                android:paddingLeft="16dp"
+                android:textColor="#212121" />
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Label Name"
+                    android:textColor="#212121"
+                    android:textStyle="bold" />
+                
+                <RadioGroup
+                    android:id="@+id/namePlateRadioGrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Available" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:checked="false"
+                        android:text="Not Available" />
+                </RadioGroup>
+            
+            
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Serial number (On Asset)"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+                
+                <RadioGroup
+                    android:id="@+id/serialNoRadioGrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Available" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:checked="false"
+                        android:text="Not Available" />
+                </RadioGroup>
+            
+            
+            </LinearLayout>
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Level of Bondage"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+                
+                <RadioGroup
+                    android:id="@+id/levelofBondageRadioGrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Asset easy to remove" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:checked="false"
+                        android:text="Asset fixed permanently" />
+                </RadioGroup>
+            
+            
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Optical impression"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+                
+                <RadioGroup
+                    android:id="@+id/opticalRadioGrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Excellent" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Good" />
+                    
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Fair" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Poor" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Very Poor" />
+                </RadioGroup>
+            
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Photos"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+                
+                <RadioGroup
+                    android:id="@+id/photosRadioGrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Yes" />
+                    
+                    <RadioButton
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="No" />
+                
+                
+                </RadioGroup>
+            
+            </LinearLayout>
+            
+            
+            <TextView
+                android:id="@+id/main_selectImgTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_address"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="#FFFFFF"
+                android:elevation="6dp"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:text="Select Image"
+                android:textColor="#007AFF"
+                android:textSize="16dp" />
+            
+            <Button
+                android:id="@+id/main_generatePdfBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/main_selectImgTxt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="#555555"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Generate PDF"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp" />
+            
+            <View
+                android:id="@+id/main_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:background="#212121"
+                android:visibility="gone" />
+            
+            <ProgressBar
+                android:id="@+id/main_progress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="35dp"
+                android:visibility="gone" />
+        
+        
+        </LinearLayout>
+    
+    
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
